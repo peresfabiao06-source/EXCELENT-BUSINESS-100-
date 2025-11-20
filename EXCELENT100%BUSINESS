@@ -521,6 +521,245 @@
             color: white;
         }
 
+        /* Chat Assistant Styles */
+        .chat-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(102, 126, 234, 0.6);
+        }
+
+        .chat-window {
+            position: fixed;
+            bottom: 5rem;
+            right: 2rem;
+            width: 380px;
+            height: 550px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            display: none;
+            flex-direction: column;
+            z-index: 999;
+            overflow: hidden;
+            animation: slideUp 0.3s ease;
+        }
+
+        .chat-window.active {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .chat-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .message.bot {
+            justify-content: flex-start;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 75%;
+            padding: 0.8rem 1rem;
+            border-radius: 15px;
+            line-height: 1.5;
+        }
+
+        .message.bot .message-content {
+            background: white;
+            color: #333;
+            border: 1px solid #e0e0e0;
+        }
+
+        .message.user .message-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .chat-suggestions {
+            padding: 0.5rem 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            background: #f8f9fa;
+        }
+
+        .suggestion-btn {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid #667eea;
+            color: #667eea;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .suggestion-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .chat-input-area {
+            padding: 1rem;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            font-size: 0.95rem;
+        }
+
+        .chat-input:focus {
+            border-color: #667eea;
+        }
+
+        .chat-send {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .chat-send:hover {
+            transform: scale(1.1);
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 0.8rem 1rem;
+            background: white;
+            border-radius: 15px;
+            width: fit-content;
+            border: 1px solid #e0e0e0;
+        }
+
+        .typing-indicator.active {
+            display: block;
+        }
+
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #667eea;
+            margin: 0 2px;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .chat-window {
+                width: calc(100% - 2rem);
+                right: 1rem;
+                left: 1rem;
+                height: 70vh;
+            }
+
+            .chat-button {
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.2rem;
@@ -1012,6 +1251,34 @@
         <p>Transformando ideias em negócios de sucesso através do conhecimento prático e acessível</p>
     </footer>
 
+    <!-- Chat Assistant -->
+    <button class="chat-button" id="chatButton" aria-label="Abrir assistente">
+        💬
+    </button>
+
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <h3>🤖 Assistente EXCELENT BUSINESS</h3>
+            <button class="chat-close" id="chatClose">✕</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="message-content">
+                    Olá! 👋 Sou o assistente virtual da EXCELENT BUSINESS. Como posso ajudá-lo hoje?
+                </div>
+            </div>
+        </div>
+        <div class="chat-suggestions" id="chatSuggestions">
+            <button class="suggestion-btn" data-question="Como começar um negócio?">Como começar um negócio?</button>
+            <button class="suggestion-btn" data-question="Dicas de atendimento">Dicas de atendimento</button>
+            <button class="suggestion-btn" data-question="Como crescer meu negócio?">Como crescer?</button>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Digite sua pergunta...">
+            <button class="chat-send" id="chatSend">➤</button>
+        </div>
+    </div>
+
     <script>
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1054,6 +1321,658 @@
             } else {
                 header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
             }
+        });
+
+        // Chat Assistant
+        const chatButton = document.getElementById('chatButton');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatClose = document.getElementById('chatClose');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+        const suggestionBtns = document.querySelectorAll('.suggestion-btn');
+
+        // Toggle chat window
+        chatButton.addEventListener('click', () => {
+            chatWindow.classList.toggle('active');
+        });
+
+        chatClose.addEventListener('click', () => {
+            chatWindow.classList.remove('active');
+        });
+
+        // Knowledge base expandida
+        const knowledgeBase = {
+            'começar': {
+                keywords: ['começar', 'iniciar', 'start', 'começo', 'principiante', 'novo negócio', 'abrir empresa'],
+                response: `Para começar um negócio com pouco dinheiro:
+
+1. 🎯 Identifique uma necessidade real no mercado
+2. 🏠 Comece de casa para evitar custos de aluguer
+3. 📱 Use redes sociais gratuitas para divulgação
+4. 💰 Ofereça serviços antes de produtos (menor investimento)
+5. ♻️ Reinvista todos os lucros iniciais
+
+Negócios para começar com menos de 5.000MT:
+• Venda de bolos/doces
+• Produtos de limpeza caseiros
+• Recarga de telemóveis
+• Cabeleireiro ao domicílio
+• Explicações
+
+Quer saber mais sobre algum destes pontos?`
+            },
+            'atendimento': {
+                keywords: ['atendimento', 'cliente', 'clientes', 'atender', 'serviço', 'satisfação', 'experiência'],
+                response: `O atendimento ao cliente é FUNDAMENTAL! 🌟
+
+Princípios essenciais:
+✓ Escute ativamente - compreenda, não apenas ouça
+✓ Seja ágil - responda em menos de 2 horas
+✓ Mantenha atitude positiva sempre
+✓ Supere expectativas com pequenos gestos
+✓ Resolva problemas no primeiro contacto
+
+⚠️ LEMBRE-SE:
+• Um cliente satisfeito conta a 3 pessoas
+• Um cliente INSATISFEITO conta a 15 pessoas
+• 96% dos insatisfeitos não reclamam, apenas não voltam
+
+O atendimento pode fazer ou destruir o seu negócio!`
+            },
+            'crescer': {
+                keywords: ['crescer', 'crescimento', 'expandir', 'desenvolver', 'aumentar', 'escalar', 'expansão'],
+                response: `Estratégias para crescer o negócio: 📈
+
+1. 👥 Construa base de clientes fiéis
+   - Programa de fidelidade
+   - Atendimento excepcional
+
+2. 🎁 Marketing boca a boca
+   - Incentive referências
+   - Peça avaliações online
+
+3. 📊 Controle financeiro rigoroso
+   - Registe todas as transações
+   - Analise o que dá mais lucro
+
+4. 🔄 Diversifique produtos/serviços
+   - Escute o que clientes precisam
+   - Crie pacotes/combos
+
+5. 🤖 Automatize processos
+   - Use ferramentas gratuitas
+   - Crie sistemas e rotinas
+
+O crescimento leva tempo, mas com consistência chega!`
+            },
+            'marketing': {
+                keywords: ['marketing', 'divulgar', 'publicidade', 'promover', 'vendas', 'propaganda', 'anúncio', 'redes sociais'],
+                response: `Marketing Digital Eficaz: 📱
+
+GRÁTIS:
+• Facebook/Instagram - poste diariamente
+• WhatsApp Business - contacto direto
+• Google Meu Negócio - apareça nas buscas
+• TikTok - vídeos curtos criativos
+
+DICAS:
+✓ Mostre bastidores do negócio
+✓ Compartilhe testemunhos de clientes
+✓ Faça promoções exclusivas online
+✓ Responda TODOS os comentários
+✓ Use fotos de qualidade
+
+Lembre-se: Marketing não é opção, é NECESSIDADE!`
+            },
+            'dinheiro': {
+                keywords: ['dinheiro', 'capital', 'investimento', 'financeiro', 'lucro', 'receita', 'despesa', 'finanças', 'contabilidade'],
+                response: `Gestão Financeira Inteligente: 💰
+
+REGRAS DE OURO:
+1. Separe o dinheiro pessoal do empresarial
+2. Registe TUDO (cada entrada e saída)
+3. Reinvista nos primeiros 6 meses
+4. Crie reserva de emergência (3 meses)
+5. Analise lucros mensalmente
+
+FERRAMENTAS GRATUITAS:
+• Google Sheets para controlo
+• Caderno de registo diário
+• Apps bancários para movimentações
+
+📊 Fórmula básica:
+Lucro = Receita - Despesas
+Meta: Lucro de pelo menos 30% sobre vendas`
+            },
+            'tempo': {
+                keywords: ['tempo', 'quando', 'quanto tempo', 'demora', 'prazo', 'duração'],
+                response: `Linha do Tempo Realista: ⏰
+
+MESES 1-3: FUNDAÇÃO
+• Valide a ideia
+• Ajuste produto/serviço
+• Construa presença online
+
+MESES 4-6: EXPANSÃO
+• Aumente produção
+• Invista em marketing
+• Melhore processos
+
+MESES 7-9: PROFISSIONALIZAÇÃO
+• Formalize negócio
+• Considere ajuda/equipa
+• Diversifique ofertas
+
+MESES 10-12: CONSOLIDAÇÃO
+• Analise resultados
+• Planeie próximo ano
+• Considere expansão
+
+Sucesso não é instantâneo - é construído dia após dia!`
+            },
+            'plano': {
+                keywords: ['plano', 'planejamento', 'planeamento', 'plano de negócio', 'business plan', 'estratégia'],
+                response: `Como criar um Plano de Negócios: 📝
+
+COMPONENTES ESSENCIAIS:
+1. Sumário Executivo
+   - O que é o negócio?
+   - Qual problema resolve?
+
+2. Análise de Mercado
+   - Quem são seus clientes?
+   - Quem são os concorrentes?
+
+3. Produtos/Serviços
+   - O que vai oferecer?
+   - Qual o diferencial?
+
+4. Plano de Marketing
+   - Como vai divulgar?
+   - Qual o preço?
+
+5. Plano Financeiro
+   - Quanto precisa investir?
+   - Quando terá lucro?
+
+6. Equipa
+   - Quem vai trabalhar?
+   - Que habilidades precisa?
+
+Um bom plano é seu GPS para o sucesso!`
+            },
+            'preço': {
+                keywords: ['preço', 'precificar', 'valor', 'quanto cobrar', 'custo', 'pricing'],
+                response: `Como Definir Preços Corretos: 💵
+
+FÓRMULA BÁSICA:
+Preço = Custos + Despesas + Margem de Lucro
+
+PASSOS:
+1. Calcule TODOS os custos
+   - Matéria-prima
+   - Mão de obra
+   - Embalagem
+
+2. Some as despesas fixas
+   - Aluguer, luz, água
+   - Transporte
+   - Marketing
+
+3. Adicione margem de lucro
+   - Mínimo: 30%
+   - Ideal: 50-100%
+
+4. Pesquise concorrentes
+   - Não seja o mais barato
+   - Seja o melhor custo-benefício
+
+⚠️ NUNCA trabalhe sem lucro! Barato demais = falência rápida`
+            },
+            'equipa': {
+                keywords: ['equipa', 'equipe', 'funcionário', 'contratar', 'colaborador', 'staff', 'recursos humanos'],
+                response: `Gestão de Equipa Eficaz: 👥
+
+QUANDO CONTRATAR?
+✓ Quando o trabalho supera sua capacidade
+✓ Quando pode pagar salário por 6 meses
+✓ Quando há tarefas repetitivas
+
+COMO CONTRATAR BEM:
+1. Defina o perfil ideal
+2. Teste habilidades práticas
+3. Verifique referências
+4. Comece com período de experiência
+
+MANTER EQUIPA MOTIVADA:
+• Pague em dia SEMPRE
+• Dê feedback constante
+• Reconheça bom trabalho
+• Ofereça crescimento
+• Seja líder, não chefe
+
+Equipa feliz = clientes satisfeitos = negócio próspero!`
+            },
+            'online': {
+                keywords: ['online', 'internet', 'digital', 'e-commerce', 'loja virtual', 'website'],
+                response: `Negócio Online de Sucesso: 💻
+
+VANTAGENS:
+✓ Baixo investimento inicial
+✓ Alcance global
+✓ Funciona 24/7
+✓ Fácil de testar ideias
+
+PASSOS PARA COMEÇAR:
+1. Escolha o produto/serviço
+2. Crie presença digital
+   - Instagram/Facebook (grátis)
+   - WhatsApp Business
+   - Site simples
+
+3. Sistema de pagamento
+   - Transferência bancária
+   - M-Pesa/E-Mola
+   - PayPal (internacional)
+
+4. Logística de entrega
+   - Correios
+   - Motoristas parceiros
+   - Entrega própria
+
+5. Atendimento online
+   - Responda rápido
+   - Seja claro
+   - Mostre o produto
+
+O digital é o presente, não o futuro!`
+            },
+            'concorrente': {
+                keywords: ['concorrente', 'concorrência', 'competidor', 'rival', 'competição'],
+                response: `Como Lidar com Concorrência: 🎯
+
+NÃO TENHA MEDO:
+Concorrência prova que há mercado!
+
+ESTRATÉGIAS:
+1. Diferencie-se
+   - Melhor atendimento
+   - Produto único
+   - Experiência superior
+
+2. Conheça os concorrentes
+   - O que fazem bem?
+   - Onde falham?
+   - Aprenda e adapte
+
+3. Foque no seu cliente
+   - Não compete em preço
+   - Compete em valor
+   - Crie relacionamento
+
+4. Inove constantemente
+   - Melhore produtos
+   - Teste novidades
+   - Escute feedback
+
+5. Colabore quando possível
+   - Parcerias estratégicas
+   - Troca de experiências
+
+Lembre-se: Você não precisa ser melhor que todos, precisa ser ÚNICO!`
+            },
+            'motivação': {
+                keywords: ['motivação', 'desânimo', 'desistir', 'cansado', 'difícil', 'desmotivado'],
+                response: `Mantenha-se Motivado: 💪
+
+É NORMAL sentir-se cansado! Todo empreendedor passa por isso.
+
+ESTRATÉGIAS:
+1. Lembre porque começou
+   - Escreva seus objetivos
+   - Visualize o sucesso
+
+2. Comemore pequenas vitórias
+   - Primeira venda
+   - Cliente satisfeito
+   - Meta atingida
+
+3. Conecte-se com outros empreendedores
+   - Partilhe experiências
+   - Aprenda com outros
+
+4. Cuide de si mesmo
+   - Durma bem
+   - Faça pausas
+   - Tenha hobbies
+
+5. Foque no progresso, não perfeição
+   - Compare-se com ontem
+   - Não com outros
+
+"O sucesso é a soma de pequenos esforços repetidos dia após dia"
+
+Você consegue! 🌟`
+            },
+            'erro': {
+                keywords: ['erro', 'errei', 'fracasso', 'falha', 'problema', 'deu errado'],
+                response: `Lidar com Erros e Fracassos: 🔧
+
+TODO empreendedor erra! A diferença é como reage.
+
+QUANDO ALGO DÁ ERRADO:
+1. Assuma responsabilidade
+   - Não culpe outros
+   - Seja honesto
+
+2. Analise o que aconteceu
+   - Por que errou?
+   - O que aprendeu?
+
+3. Corrija rapidamente
+   - Cliente: resolva primeiro
+   - Processo: mude depois
+
+4. Comunique transparentemente
+   - Explique o erro
+   - Mostre a solução
+
+5. Previna repetição
+   - Crie sistema
+   - Documente lição
+
+LEMBRE-SE:
+• Erros são lições caras, não desperdice!
+• Falhar não é fracassar, desistir é!
+• Grandes empresas nasceram de erros corrigidos
+
+Continue tentando! 💪`
+            },
+            'fornecedor': {
+                keywords: ['fornecedor', 'fornecedores', 'supplier', 'matéria-prima', 'produto', 'comprar'],
+                response: `Gestão de Fornecedores: 📦
+
+COMO ESCOLHER BEM:
+1. Qualidade consistente
+   - Peça amostras
+   - Teste antes de comprar grande
+
+2. Preço justo
+   - Compare 3+ fornecedores
+   - Negocie sempre
+
+3. Confiabilidade
+   - Entrega no prazo
+   - Disponibilidade
+   - Comunicação clara
+
+4. Condições de pagamento
+   - Prazo para pagar
+   - Possibilidade de crédito
+
+RELACIONAMENTO:
+✓ Pague em dia
+✓ Comunique-se claramente
+✓ Seja profissional
+✓ Construa parceria de longo prazo
+
+DICA IMPORTANTE:
+Tenha sempre 2+ fornecedores do mesmo produto.
+Nunca dependa de apenas um!`
+            },
+            'legalização': {
+                keywords: ['legalização', 'formalizar', 'registo', 'licença', 'alvará', 'documentos', 'legal'],
+                response: `Formalização do Negócio: 📋
+
+POR QUE FORMALIZAR?
+✓ Acesso a financiamento
+✓ Credibilidade com clientes
+✓ Proteção legal
+✓ Crescimento organizado
+
+PASSOS BÁSICOS:
+1. Escolha estrutura
+   - Empresário individual
+   - Sociedade
+   - Microempresa
+
+2. Registe a empresa
+   - Conservatória/Registo Comercial
+   - Número de contribuinte
+
+3. Obtenha licenças
+   - Alvará de funcionamento
+   - Licenças específicas do setor
+
+4. Abra conta bancária empresarial
+
+5. Sistema de contabilidade
+
+QUANDO FORMALIZAR?
+Quando o faturamento justificar (geralmente após 6-12 meses).
+
+Consulte um contador local para orientação específica!`
+            },
+            'produto': {
+                keywords: ['produto', 'produtos', 'mercadoria', 'artigo', 'criar produto', 'desenvolver'],
+                response: `Desenvolvimento de Produtos: 🎁
+
+CRIAR PRODUTO VENCEDOR:
+1. Resolva problema real
+   - Ouça os clientes
+   - Observe necessidades
+
+2. Teste com mínimo viável
+   - Versão básica primeiro
+   - Melhore com feedback
+
+3. Qualidade acima de tudo
+   - Melhor produto médio bem feito
+   - Que produto excelente mal feito
+
+4. Embalagem importa
+   - Proteja o produto
+   - Impressione visualmente
+   - Facilite uso
+
+5. Diferenciais
+   - O que te torna único?
+   - Por que escolheriam você?
+
+CICLO DE VIDA:
+Lançamento → Crescimento → Maturidade → Renovação
+
+Inove constantemente ou seja ultrapassado!`
+            },
+            'crise': {
+                keywords: ['crise', 'dificuldade', 'pandemia', 'economia', 'recessão', 'vendas caindo'],
+                response: `Superar Tempos Difíceis: 🛡️
+
+EM MOMENTOS DE CRISE:
+
+CORTE DESPESAS:
+✓ Elimine o não essencial
+✓ Renegocie contratos
+✓ Reduza estoques
+
+PROTEJA O CAIXA:
+✓ Cobre mais rápido
+✓ Pague mais devagar (com acordo)
+✓ Evite novos compromissos
+
+ADAPTE-SE:
+✓ Mude produtos/serviços
+✓ Explore novos canais
+✓ Seja criativo
+
+MANTENHA CLIENTES:
+✓ Comunique-se mais
+✓ Ofereça facilidades
+✓ Mostre que está junto
+
+OPORTUNIDADES:
+• Concorrentes fracos saem
+• Pode comprar barato
+• Clientes valorizam lealdade
+
+"Nunca desperdice uma boa crise" - Winston Churchill
+
+Resiliência vence!`
+            },
+            'parceria': {
+                keywords: ['parceria', 'parceiro', 'sociedade', 'sócio', 'colaboração'],
+                response: `Parcerias Estratégicas: 🤝
+
+QUANDO FAZER PARCERIA:
+✓ Complementam habilidades
+✓ Compartilham riscos/custos
+✓ Expandem alcance
+✓ Trazem recursos necessários
+
+TIPOS DE PARCERIA:
+1. Fornecedor preferencial
+2. Canal de distribuição
+3. Co-criação de produtos
+4. Compartilhamento de espaço
+5. Parceria de marketing
+
+ANTES DE FIRMAR:
+❗ Coloque TUDO no papel
+❗ Defina responsabilidades
+❗ Acordem divisão de lucros
+❗ Prevejam saída/dissolução
+❗ Verifiquem valores alinhados
+
+SINAIS DE ALERTA:
+🚩 Promessas vagas
+🚩 Falta de transparência
+🚩 Pressão para decidir rápido
+🚩 Valores incompatíveis
+
+Boa parceria multiplica resultados!
+Má parceria destrói negócios!`
+            },
+            'tecnologia': {
+                keywords: ['tecnologia', 'software', 'app', 'sistema', 'ferramenta', 'automação'],
+                response: `Tecnologia para Pequenos Negócios: 💻
+
+FERRAMENTAS GRATUITAS ESSENCIAIS:
+
+GESTÃO:
+• Trello - organização de tarefas
+• Google Calendar - agendamentos
+• Google Drive - arquivos
+
+FINANCEIRO:
+• Google Sheets - controlo
+• Wave - contabilidade grátis
+• Apps bancários
+
+COMUNICAÇÃO:
+• WhatsApp Business
+• Zoom - reuniões
+• Gmail - e-mail profissional
+
+MARKETING:
+• Canva - design
+• Buffer - programar posts
+• Google Analytics - análise
+
+VENDAS:
+• Instagram Shopping
+• Facebook Marketplace
+• OLX/Marketplace local
+
+DICA:
+Comece simples! Não precisa de tudo logo.
+Adicione ferramentas conforme cresce.
+
+Tecnologia é aliada, não inimiga!`
+            }
+        };
+
+        function findResponse(question) {
+            const lowerQuestion = question.toLowerCase();
+            
+            for (const [key, data] of Object.entries(knowledgeBase)) {
+                if (key === 'default') continue;
+                
+                for (const keyword of data.keywords) {
+                    if (lowerQuestion.includes(keyword)) {
+                        return data.response;
+                    }
+                }
+            }
+            
+            return knowledgeBase.default.response;
+        }
+
+        function addMessage(content, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            contentDiv.textContent = content;
+            
+            messageDiv.appendChild(contentDiv);
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message bot';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="typing-indicator active">
+                    <span></span><span></span><span></span>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const typingDiv = document.getElementById('typingIndicator');
+            if (typingDiv) {
+                typingDiv.remove();
+            }
+        }
+
+        function handleQuestion(question) {
+            if (!question.trim()) return;
+            
+            addMessage(question, true);
+            chatInput.value = '';
+            
+            showTypingIndicator();
+            
+            setTimeout(() => {
+                removeTypingIndicator();
+                const response = findResponse(question);
+                addMessage(response, false);
+            }, 1000);
+        }
+
+        // Send message
+        chatSend.addEventListener('click', () => {
+            handleQuestion(chatInput.value);
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleQuestion(chatInput.value);
+            }
+        });
+
+        // Suggestion buttons
+        suggestionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const question = btn.getAttribute('data-question');
+                handleQuestion(question);
+            });
         });
     </script>
 </body>
